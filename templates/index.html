@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signature Verification</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2f6fc;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            color: #34495e;
+        }
+        form {
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input[type="file"] {
+            margin: 10px 0;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 30px;
+            font-size: 16px;
+            border: none;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        img {
+            width: 120px;
+            margin: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖋️ Signature Verification</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <p><input type="file" name="sig1" accept="image/*" required></p>
+        <p><input type="file" name="sig2" accept="image/*" required></p>
+        <input type="submit" value="Compare Signatures">
+    </form>
+
+    {% if result %}
+        <div class="result">{{ result }}</div>
+        <div>
+            <img src="{{ img1 }}" alt="Signature 1">
+            <img src="{{ img2 }}" alt="Signature 2">
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="result" style="color:red;">{{ error }}</div>
+    {% endif %}
+</body>
+</html>
